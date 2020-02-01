@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.2.1)  1 FEB 2020 14:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.2.1)  1 FEB 2020 14:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -946,7 +946,7 @@ Users/hazelkavili/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><
 ></Users/hazelkavili/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pf
 b></Users/hazelkavili/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.p
 fb>
-Output written on 20200217_rmarkdown_demo.pdf (3 pages, 199153 bytes).
+Output written on 20200217_rmarkdown_demo.pdf (3 pages, 199154 bytes).
 PDF statistics:
  84 PDF objects out of 1000 (max. 8388607)
  67 compressed objects within 1 object stream

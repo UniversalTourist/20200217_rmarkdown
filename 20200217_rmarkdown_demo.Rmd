@@ -6,7 +6,7 @@ output: pdf_document
 ---
 
 ## Spotify Songs
- We will work on a *[TidyTuesday](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-01-21/readme.md)* dataset today. 
+We will work on a *[TidyTuesday](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-01-21/readme.md)* dataset today. 
 *(Try to check out the TidyTuesday concept after the event! You'll love it!)*
 
 #### Load libraries 
@@ -17,9 +17,7 @@ library(knitr)
 library(kableExtra)
 ```
 
-
 #### Read the data set from source
-
 ```{r message=FALSE}
 spotify_songs <- 
   readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-21/spotify_songs.csv')
@@ -27,7 +25,6 @@ spotify_songs <-
 
 #### Start Exploring
 *glimpse* function makes it possible to see every column and some observations in a data frame. 
-
 ```{r}
 glimpse(spotify_songs)
 ```
@@ -40,13 +37,12 @@ artists_tracks <- spotify_songs %>%
   distinct(track_id, .keep_all = TRUE) %>% 
   count(track_artist, sort = TRUE) %>%
   top_n(n = 20, wt = n)
-
 ```
 
 A stylish table:
 ```{r}
 head(artists_tracks) %>% 
-  knitr::kable(align = "lccrr",  caption = "Top 10 artists with most tracks")
+  kable(align = "lccrr",  caption = "Top 10 artists with most tracks")
 ```
 
 Let's create a plot by using this data:

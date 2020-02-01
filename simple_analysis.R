@@ -20,5 +20,37 @@ artist_plot <- ggplot(data = artists_tracks, aes(x = reorder(track_artist, n), y
   geom_bar(stat = 'identity') +
   coord_flip() +
   labs(title = 'Top 20 artist with most tracks in list', x = 'Artists', y = 'Number if tracks')
+
+## Time passed between album release year
+album_release_years <- 
+  spotify_songs %>% 
+  mutate(release_year = as.numeric(str_sub(track_album_release_date, 1, 4))) %>% #get only year information
+  distinct(track_id, .keep_all = TRUE) %>% 
+  distinct(track_name, track_artist, .keep_all = TRUE) %>% 
+  group_by(track_artist) %>% 
+  mutate(first_release_year = min(release_year),
+         last_release_year = max(release_year),
+         year_diff = last_release_year - first_release_year) %>%
+  ungroup()  %>% 
+  mutate(track_artist = fct_reorder(track_artist, year_diff)) %>% 
+  filter(year_diff > 30)
+
+
+
+ggplot(data = album_release_years) +
+  geom_path(aes(x = release_year, y = track_artist),
+            arrow = arrow(length = unit(1.5, "mm"), type = "closed")) 
+
+
+  
+  
+  
+  
+
+
+
+
+
+
   
   
