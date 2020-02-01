@@ -32,14 +32,17 @@ album_release_years <-
          last_release_year = max(release_year),
          year_diff = last_release_year - first_release_year) %>%
   ungroup()  %>% 
-  mutate(track_artist = fct_reorder(track_artist, year_diff)) %>% 
-  filter(year_diff > 30)
+  mutate(track_artist = fct_reorder(track_artist, year_diff)) 
 
 
 
-ggplot(data = album_release_years) +
-  geom_path(aes(x = release_year, y = track_artist),
-            arrow = arrow(length = unit(1.5, "mm"), type = "closed")) 
+album_release_years %>%  
+  filter(year_diff > 50) %>% 
+  ggplot() +
+  geom_path(aes(x = release_year, y = track_artist)) +
+  geom_point(aes(release_year, track_artist, color = track_artist, alpha = 0.1), size = 2) +
+  labs(title = '', x = 'Album release years', y = 'Artists') +
+  theme_bw()
 
 
   

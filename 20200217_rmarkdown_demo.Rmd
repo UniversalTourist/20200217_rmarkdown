@@ -14,7 +14,6 @@ We will work on a *[TidyTuesday](https://github.com/rfordatascience/tidytuesday/
 library(tidyverse)
 library(lubridate)
 library(knitr)
-library(kableExtra)
 ```
 
 #### Read the data set from source
@@ -28,6 +27,7 @@ spotify_songs <-
 ```{r}
 glimpse(spotify_songs)
 ```
+
 
 #### Exploring data
 Some songs are duplicated, because they're in different albums or in different playlist. I wonder, how many distinct tracks there are for each artist:
