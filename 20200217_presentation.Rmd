@@ -5,21 +5,16 @@ date: "1/27/2020"
 output: ioslides_presentation
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
+## Welcome to R-Ladies Helsinki 
 
-## R Markdown
+This is our first event in 2020!
 
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+## R-Ladies Helsinki with Numbers
 
-## Slide with Bullets
-
-- Bullet 1
-- Bullet 2
-- Bullet 3
+- 280 Meetup members
+- 75 Twitter followers
+- 20 people hosted in each event
 
 ## Slide with R Output
 
