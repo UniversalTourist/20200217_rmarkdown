@@ -42,7 +42,7 @@ album_release_years %>%
   geom_path(aes(x = release_year, y = track_artist)) +
   geom_point(aes(release_year, track_artist, color = track_artist, alpha = 0.1), size = 2) +
   labs(title = '', x = 'Album release years', y = 'Artists') +
-  theme_bw()
+  theme_light()
 
 
   

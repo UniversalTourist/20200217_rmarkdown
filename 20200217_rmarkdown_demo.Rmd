@@ -30,7 +30,7 @@ glimpse(spotify_songs)
 
 
 #### Exploring data
-Some songs are duplicated, because they're in different albums or in different playlist. I wonder, how many distinct tracks there are for each artist:
+Some songs are duplicated, because they're in different albums or in different playlist. I wonder, how many distinct tracks there are for each artist, and I'll look for top 20:
 
 ```{r}
 artists_tracks <- spotify_songs %>% 
@@ -39,7 +39,7 @@ artists_tracks <- spotify_songs %>%
   top_n(n = 20, wt = n)
 ```
 
-A stylish table:
+I want to see results in a stylish table:
 ```{r}
 head(artists_tracks) %>% 
   kable(align = "lccrr",  caption = "Top 10 artists with most tracks")
@@ -58,9 +58,32 @@ artist_plot
 ```
 
 
+I realise some artists released so many albums during years and I wonder is the longest time passed since they released their last album.
+
+```{r}
+album_release_years <- 
+  spotify_songs %>% 
+  mutate(release_year = as.numeric(str_sub(track_album_release_date, 1, 4))) %>% #get only year information
+  distinct(track_id, .keep_all = TRUE) %>% 
+  distinct(track_name, track_artist, .keep_all = TRUE) %>% 
+  group_by(track_artist) %>% 
+  mutate(first_release_year = min(release_year),
+         last_release_year = max(release_year),
+         year_diff = last_release_year - first_release_year) %>%
+  ungroup()  %>% 
+  mutate(track_artist = fct_reorder(track_artist, year_diff)) 
+```
 
 
-
+```{r, fig.cap = 'Years passed since first album release'}
+album_release_years %>%  
+  filter(year_diff > 50) %>% 
+  ggplot() +
+  geom_path(aes(x = release_year, y = track_artist)) +
+  geom_point(aes(release_year, track_artist, color = track_artist, alpha = 0.1), size = 2) +
+  labs(title = '', x = 'Album release years', y = 'Artists') +
+  theme_light()
+```
 
 
 
