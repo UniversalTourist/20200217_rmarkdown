@@ -7,6 +7,7 @@ output: pdf_document
 
 ## Spotify Songs
 We will work on a *[TidyTuesday](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-01-21/readme.md)* dataset today. 
+
 *(Try to check out the TidyTuesday concept after the event! You'll love it!)*
 
 #### Load libraries 
@@ -23,6 +24,7 @@ spotify_songs <-
 ```
 
 #### Start Exploring
+
 *glimpse* function makes it possible to see every column and some observations in a data frame. 
 ```{r}
 glimpse(spotify_songs)
@@ -30,6 +32,7 @@ glimpse(spotify_songs)
 
 
 #### Exploring data
+
 Some songs are duplicated, because they're in different albums or in different playlist. I wonder, how many distinct tracks there are for each artist, and I'll look for top 20:
 
 ```{r}
@@ -46,7 +49,7 @@ head(artists_tracks) %>%
 ```
 
 Let's create a plot by using this data:
-```{r}
+```{r, fig.align = 'left'}
 artist_plot <- ggplot(data = artists_tracks, aes(x = reorder(track_artist, n), y = n)) +
   geom_bar(stat = 'identity') +
   coord_flip() +
@@ -75,7 +78,7 @@ album_release_years <-
 ```
 
 
-```{r, fig.cap = 'Years passed since first album release'}
+```{r, fig.cap = 'Years passed since first album release', fig.width = 12, fig.height = 8}
 album_release_years %>%  
   filter(year_diff > 50) %>% 
   ggplot() +
